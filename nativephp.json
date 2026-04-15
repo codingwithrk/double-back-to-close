@@ -1,0 +1,83 @@
+{
+    "name": "codingwithrk/double-back-to-close",
+    "namespace": "DoubleBackToClose",
+    "keywords": ["back", "exit", "close", "navigation"],
+    "category": "utilities",
+    "license": "MIT",
+    "pricing": {
+        "type": "free"
+    },
+    "author": {
+        "name": "CodingWithRK",
+        "email": "pappalarajkumar@gmail.com",
+        "url": ""
+    },
+    "homepage": "",
+    "repository": "",
+    "funding": [],
+    "platforms": [
+        "android",
+        "ios"
+    ],
+    "screenshots": [],
+
+    "bridge_functions": [
+        {
+            "name": "DoubleBackToClose.Enable",
+            "android": "com.codingwithrk.plugins.double_back_to_close.DoubleBackToCloseFunctions.Enable",
+            "ios": "DoubleBackToCloseFunctions.Enable",
+            "description": "Enable double-back-to-close with a configurable toast message and timeout"
+        },
+        {
+            "name": "DoubleBackToClose.Disable",
+            "android": "com.codingwithrk.plugins.double_back_to_close.DoubleBackToCloseFunctions.Disable",
+            "ios": "DoubleBackToCloseFunctions.Disable",
+            "description": "Disable the double-back-to-close feature and remove the back press interceptor"
+        },
+        {
+            "name": "DoubleBackToClose.Configure",
+            "android": "com.codingwithrk.plugins.double_back_to_close.DoubleBackToCloseFunctions.Configure",
+            "ios": "DoubleBackToCloseFunctions.Configure",
+            "description": "Update the toast message and timeout without re-enabling"
+        }
+    ],
+
+    "android": {
+        "min_version": 26,
+        "permissions": [],
+        "repositories": [],
+        "dependencies": {
+            "implementation": []
+        },
+        "activities": [],
+        "services": [],
+        "receivers": [],
+        "providers": []
+    },
+
+    "ios": {
+        "min_version": "18.2",
+        "permissions": [],
+        "repositories": [],
+        "dependencies": {
+            "swift_packages": [],
+            "pods": []
+        }
+    },
+
+    "assets": {
+        "android": [],
+        "ios": []
+    },
+
+    "secrets": [],
+
+    "events": [
+        "Codingwithrk\\DoubleBackToClose\\Events\\DoubleBackToCloseTriggered",
+        "Codingwithrk\\DoubleBackToClose\\Events\\AppExiting"
+    ],
+
+    "hooks": {
+        "copy_assets": "nativephp:double-back-to-close:copy-assets"
+    }
+}
