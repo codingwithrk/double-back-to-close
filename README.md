@@ -1,5 +1,9 @@
 # Double Back to Close — NativePHP Mobile Plugin
 
+[![Latest Version](https://img.shields.io/packagist/v/codingwithrk/double-back-to-close?style=plastic)](https://packagist.org/packages/codingwithrk/double-back-to-close)
+![Packagist Downloads](https://img.shields.io/packagist/dt/codingwithrk/double-back-to-close?style=plastic)
+![License](https://img.shields.io/packagist/l/codingwithrk/double-back-to-close?style=plastic)
+
 ![Image](https://raw.githubusercontent.com/codingwithrk/nativephp-mobile-plugins/refs/heads/main/assets/screenshots/double-back-to-close.png)
 
 Prompts users to press the back button twice before the app exits.
