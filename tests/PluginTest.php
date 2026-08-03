@@ -219,11 +219,19 @@ describe('Composer Configuration', function () {
         expect($composer['extra']['nativephp']['manifest'])->toBe('nativephp.json');
     });
 
-    it('requires nativephp/mobile-dialog', function () {
+    it('supports both NativePHP Mobile v3 and v4', function () {
         $composerPath = $this->pluginPath . '/composer.json';
         $composer = json_decode(file_get_contents($composerPath), true);
 
-        expect($composer['require'])->toHaveKey('nativephp/mobile-dialog');
+        expect($composer['require']['nativephp/mobile'])->toBe('^3.0|^4.0');
+    });
+
+    it('suggests nativephp/mobile-dialog instead of requiring it', function () {
+        $composerPath = $this->pluginPath . '/composer.json';
+        $composer = json_decode(file_get_contents($composerPath), true);
+
+        expect($composer['require'])->not->toHaveKey('nativephp/mobile-dialog');
+        expect($composer['suggest'])->toHaveKey('nativephp/mobile-dialog');
     });
 });
 

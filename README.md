@@ -10,7 +10,7 @@ Prompts users to press the back button twice before the app exits.
 
 On the **first** back press a native toast is shown ("Press back again to exit"). If the user presses back **again within the timeout** the app exits. If the timeout elapses the state resets and the next back press starts the cycle over.
 
-Uses [`nativephp/mobile-dialog`](https://nativephp.com/plugins/nativephp/mobile-dialog) as a dependency so you can optionally surface the confirmation message as a rich dialog toast from PHP.
+Supports NativePHP Mobile **v3** and **v4** (SuperNative). `DoubleBackToClose::showToast()` uses the `Dialog` facade to optionally surface the confirmation message as a rich dialog toast from PHP.
 
 ---
 
@@ -20,6 +20,8 @@ Uses [`nativephp/mobile-dialog`](https://nativephp.com/plugins/nativephp/mobile-
 |----------|------------------------------------------------------------|
 | Android  | API 26 (Android 8)                                         |
 | iOS      | 18.2 (feature is a no-op; iOS has no hardware back button) |
+
+`nativephp/mobile` `^3.0` or `^4.0`.
 
 ---
 
@@ -41,11 +43,16 @@ Register this plugin (adds the service provider to your `NativePluginsServicePro
 php artisan native:plugin:register codingwithrk/double-back-to-close
 ```
 
-Register the dependency plugin:
+### `showToast()` on NativePHP Mobile v3
+
+On v4, `Dialog` ships inside `nativephp/mobile` core — no extra steps needed. On **v3**, `Dialog` is a separate plugin, so if you want to use `DoubleBackToClose::showToast()` install and register it too:
 
 ```bash
-php artisan native:plugin:register nativephp/mobile-dialog  
+composer require nativephp/mobile-dialog
+php artisan native:plugin:register nativephp/mobile-dialog
 ```
+
+This is only required if you call `showToast()`; `enable()`, `disable()`, and `configure()` work without it.
 
 Verify:
 
@@ -72,7 +79,7 @@ DoubleBackToClose::configure('Press back to exit', 2500);
 // Disable (restores default back behaviour)
 DoubleBackToClose::disable();
 
-// Show a toast via the mobile-dialog plugin
+// Show a toast via the Dialog facade (built in on v4; requires nativephp/mobile-dialog on v3)
 DoubleBackToClose::showToast('Press back again to exit');
 ```
 
@@ -97,7 +104,7 @@ class AppLayout extends Component
 
 ### `DoubleBackToCloseTriggered`
 
-Dispatched on the **first** back press. The native Android `Toast` has already been shown; listen to this event if you want to show a dialog toast via `mobile-dialog` instead.
+Dispatched on the **first** back press. The native Android `Toast` has already been shown; listen to this event if you want to show a dialog toast via the `Dialog` facade instead.
 
 ```php
 use Native\Mobile\Attributes\OnNative;

@@ -11,8 +11,10 @@
     ],
     "require": {
         "php": "^8.2",
-        "nativephp/mobile": "^3.0",
-        "nativephp/mobile-dialog": "^1.0"
+        "nativephp/mobile": "^3.0|^4.0"
+    },
+    "suggest": {
+        "nativephp/mobile-dialog": "Required on NativePHP Mobile v3 to use DoubleBackToClose::showToast(). Built into nativephp/mobile core on v4+."
     },
     "require-dev": {
         "pestphp/pest": "^3.0"
